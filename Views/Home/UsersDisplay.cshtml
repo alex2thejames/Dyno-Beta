@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .whiteBG {
+            background: white;
+        }
+        .main {
+            border-radius: 10px;
+            height: 100vh;
+            margin-bottom: -85px;
+            overflow: auto;
+            text-align: center;
+        }
+        table {
+            margin-top: 4%;
+        }
+        @* .btn-secondary {
+            width: 22% !important;
+        } *@
+    </style>
+</head>
+<body>
+    <div class="whiteBG main container">
+        <table class="table table-bordered table-striped">
+            @if(ViewBag.SearchCondition == null)
+            {
+                <th colspan="3">All Users</th>
+            }
+            else
+            {
+                <th colspan="3">Search Results</th>
+            }
+            @foreach(var i in @ViewBag.AllUsers)
+            {
+                @* bool userFriend = false; *@
+                <tr>
+                    <td>@i.FirstName @i.LastName</td>
+                    @if(i.UserId != @ViewBag.CurrUser.UserId)
+                    {
+                        <td>
+                            <a href="/user/@i.UserId"><button class="btn btn-secondary">View Profile</button></a>
+                        </td>
+                        @* @foreach(var j in @ViewBag.CurrUser.Friends) *@
+                        @* { *@
+                            @* @if(i.UserId != j.UserId) *@
+                            @* { *@
+                                <td>
+                                    @* <a href="/friend/@i.UserId"> *@
+                                    <button class="btn btn-success">Add Friend</button>
+                                    @* </a> *@
+                                </td>
+                            @* } *@
+                        @* } *@
+                    }
+                    else
+                    {
+                        <td colspan="2">
+                            <button class="btn btn-warning">Current User</button>
+                        </td>
+                    }
+                </tr>
+            }
+        </table>
+    </div>
+</body>
+</html>

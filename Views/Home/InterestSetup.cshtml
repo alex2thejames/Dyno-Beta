@@ -1,0 +1,64 @@
+@using Dyno.Models
+@model TopicTemp
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .whiteBG {
+            background: white;
+        }
+        .main {
+            border-radius: 10px;
+            height: 100vh;
+            margin-bottom: -85px;
+            overflow: auto;
+            text-align: center;
+        }
+        .input2 {
+            line-height: 2;
+            margin-bottom: 10px;
+            border-radius: 10px;
+        }
+        .btn-success {
+            vertical-align: top;
+        }
+        h2 {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            font-family: courier;
+        }
+    </style>
+</head>
+<body>
+    <div class="whiteBG main container">
+        <h2>Add 3 Topics you are interested in (Plural)</h2>
+        <form asp-action="InterestIntialize" asp-controller="Home" method="post" class="input-field col s3">
+            <span asp-validation-for="TopicName1"></span>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon3">Topic One</span>
+                </div>
+                <input class="form-control" aria-describedby="basic-addon3" type="text" name="TopicName1" required>
+            </div>
+            <span asp-validation-for="TopicName2"></span>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon3">Topic Two</span>
+                </div>
+                <input class="form-control" aria-describedby="basic-addon3" type="text" name="TopicName2" required>
+            </div>
+            <span asp-validation-for="TopicName3"></span>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon3">Topic Three</span>
+                </div>
+                <input class="form-control" aria-describedby="basic-addon3" type="text" name="TopicName3" required>
+            </div>
+            <button class="btn btn-success" type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

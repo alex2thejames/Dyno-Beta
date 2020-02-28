@@ -1,0 +1,75 @@
+@using Dyno.Models
+@model Topic
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .whiteBG {
+            background: white;
+        }
+        .main {
+            border-radius: 10px;
+            height: 100vh;
+            margin-bottom: -85px;
+            overflow: auto;
+            text-align: center;
+        }
+        .input2 {
+            line-height: 2;
+        }
+        .btn-success {
+            vertical-align: top;
+        }
+        table {
+            margin-top: 4%;
+        }
+        td {
+            line-height: 3;
+        }
+    </style>
+</head>
+<body>
+    <div class="whiteBG main container">
+        <table class="table table-bordered table-hover">
+            <tr>
+                <th colspan="2">Current Interests:</th>
+            </tr>
+            @foreach(var i in @ViewBag.CurrUser.Interests)
+            {
+            <tr>
+                <td>@i.Topic.TopicName</td>
+                @if(@ViewBag.CurrUser.Interests.Count > 3)
+                {
+                    <td><a href="interests/delete/@i.InterestId"><button class="btn btn-danger">Delete</button></a></td>
+                } else {
+                    <td><button class="btn btn-danger" data-toggle="tooltip" data-placement="left" title="Can't have less than three interests" disabled>Delete</button></td>
+                }
+            </tr>
+            }
+        </table>
+
+        
+        @* <table class="table">
+        <th>Add Interests</th>
+        @foreach(var i in @ViewBag.AllTopics)
+        {
+                <a href="addInterest/@i"><p>@i</p></a>
+        }
+        </table> *@
+        <h3>Add Topic</h3>
+        <form asp-action="CreateTopic" asp-controller="Home" method="post" class="input-field col s3">
+            <span asp-validation-for="TopicName"></span>
+            <input class="input2" placeholder="Topic Name" type="text" name="TopicName" required>
+            <button class="btn btn-success" type="submit">Submit</button>
+        </form>
+    </div>
+    <script>
+        $(document).ready(function() {
+        $("body").tooltip({ selector: '[data-toggle=tooltip]' });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .whiteBG {
+            background: white;
+        }
+        .main {
+            border-radius: 10px;
+            height: 100vh;
+            margin-bottom: -85px;
+            overflow: auto;
+            text-align: center;
+        }
+        a {
+            color: gray;
+        }
+        .a1 {
+            height: 30px;
+            width: 75px;
+            text-align: center;
+            line-height: 27px;
+            float: right;
+            border-radius: 8px;
+            background: yellow;
+            color: black;
+            text-decoration: none;
+            font-weight: 500;
+            border: 2px solid black;
+            margin-right: 30px;
+            margin-top: 10px;
+        }
+        .article {
+        }
+        h3 {
+            margin: auto;
+        }
+        .img123 {
+            width: 95%;
+            margin-top: 4%;
+            margin-bottom: 1%;
+        }
+        .leftT {
+            margin-left: 2.5%;
+            text-align: left !important;
+        }
+
+        .a3 {
+            float: left;
+            margin-top: 4px;
+        }
+        .divider {
+            width: 95%;
+            border-bottom: 2px solid black;
+            margin: auto;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container whiteBG main">
+        @foreach(var i in @ViewBag.CurrUser.Interests)
+        {
+            <div class="article">
+                <img class="img123" src=@i.Topic.TopicIMG>
+                <h3 class="leftT">@i.Topic.TopicTitle</h3>
+                @* <p class="leftT">The Volkswagen ID.R doesn't have much in common with a McLaren 720S, other than the fact that they are both performance-crazed cars. One gets its power from batteries, the other from gas.</p> *@
+                <a class="a3 leftT" href=@i.Topic.TopicLink target="_blank">Read More...</a>
+            </div>
+            <div class="divider"></div>
+        }
+</body>
+</html>

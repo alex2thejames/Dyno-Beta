@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .whiteBG {
+            background: white;
+        }
+        .main {
+            border-radius: 10px;
+            height: 100vh;
+            margin-bottom: -85px;
+            overflow: auto;
+            text-align: center;
+        }
+        table {
+            margin-top: 4%;
+        }
+        td {
+            @* line-height: 3; *@
+        }
+        .btn-secondary {
+            width: 20% !important;
+        }
+        .rowD {
+            font-size: 25px;
+            background: rgb(242,242,242);
+            font-family: monospace;
+            vertical-align: middle !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="whiteBG main container">
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th colspan="4">@ViewBag.UserProfile.FirstName @ViewBag.UserProfile.LastName's Profile</th>
+            </tr>
+            <td rowspan="@(@ViewBag.UserProfile.Interests.Count + 1)" class="rowD">Interests</td>
+            @foreach(var i in @ViewBag.UserProfile.Interests)
+            {   
+                <tr>
+                <td>@i.Topic.TopicName</td>
+                </tr>
+            }
+            @* <tr>
+                <Friends></Friends>
+            </tr> *@
+        </table>
+    </div>
+</body>
+</html>
